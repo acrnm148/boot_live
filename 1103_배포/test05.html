@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue.js</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div>메세지 : {{message}}</div>
+      <div v-text="'메시지 : ' + message">무시된다</div>
+      <div v-html="'메시지 : ' + message">무시된다</div>
+      <!-- v-html 안에 js를 실행할 수 있는 코드를 집어 넣으면 XSS 공격 받을수도 -->
+      <!-- <div v-html="'<script> alert("hello") </script>"></div> -->
+    </div>
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          message: "<h2 style='color:red'>Hello Vue~!</h2>",
+        },
+      });
+    </script>
+  </body>
+</html>
